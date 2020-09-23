@@ -11,6 +11,10 @@
 
 #define LED_GREEN   PB5     // AVR pin where green LED is connected
 #define SHORT_DELAY 50      // Delay in miliseconds
+#define DELAY_MARK 1000      // Delay in miliseconds
+#define SIZE 3
+#define LENG 3
+
 #ifndef F_CPU
 #define F_CPU 16000000      // CPU frequency in Hz required for delay func
 #endif
@@ -18,6 +22,9 @@
 
 #include <util/delay.h>     // Functions for busy-wait delay loops
 #include <avr/io.h>         // AVR device-specific IO definitions
+
+bool matrix[SIZE][LENG] = {{0,0,0},{1,1,1},{0,0,0}};
+
 
 int main(void){
     // Set pin as output in Data Direction Register

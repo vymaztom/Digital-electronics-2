@@ -22,8 +22,9 @@
 
 #include <util/delay.h>     // Functions for busy-wait delay loops
 #include <avr/io.h>         // AVR device-specific IO definitions
+#include "morse.h"
 
-bool matrix[SIZE][LENG] = {{0,0,0},{1,1,1},{0,0,0}};
+//bool matrix[SIZE][LENG] = {{0,0,0},{1,1,1},{0,0,0}};
 
 
 int main(void){

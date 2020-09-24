@@ -1,5 +1,5 @@
 ########################################################################
-# 
+#
 # AVR project Makefile.
 #
 # Copyright (c) 2018-2020 Wykys, Tomas Fryza
@@ -16,7 +16,7 @@
 # Linux usage:
 #    make        # Compile all binary
 #    make all    # Same as make
-#    make clean  # Remove ALL binaries and object files from the directory
+#    make cl     # Remove ALL binaries and object files from the directory
 #    make flash  # Write compiled file to the Flash memory
 #    make list   # Generate extended listing file
 #    make size   # Display the sizes of sections inside binary file
@@ -105,6 +105,6 @@ flash : $(TARGET).hex
 	@$(AVRDUDE) -p $(MCU_DUDE) -c arduino -D -V -u -q -U flash:w:$(TARGET).hex:i -P $(USBPORT)
 
 ## Clean rule
-clean :
+cl :
 	@echo "Cleaning project files \t$(RMFILES)"
 	@$(RM) $(RMFILES)

@@ -10,21 +10,17 @@
  **********************************************************************/
 
 #define LED_GREEN   PB5     // AVR pin where green LED is connected
-#define SHORT_DELAY 50      // Delay in miliseconds
-#define DELAY_MARK 1000      // Delay in miliseconds
-#define SIZE 3
-#define LENG 3
+#define SHORT_DELAY 100
+#define DELAY 500
+#define LONG_DELAY 1000
 
 #ifndef F_CPU
 #define F_CPU 16000000      // CPU frequency in Hz required for delay func
 #endif
 
 
-#include <util/delay.h>     // Functions for busy-wait delay loops
-#include <avr/io.h>         // AVR device-specific IO definitions
-#include "morse.h"
-
-//bool matrix[SIZE][LENG] = {{0,0,0},{1,1,1},{0,0,0}};
+#include <util/delay.h>
+#include <avr/io.h>
 
 
 int main(void){
@@ -38,12 +34,22 @@ int main(void){
 
     // Infinite loop
     while (1){
-        // Pause several miliseconds
-        _delay_ms(SHORT_DELAY);
 
-        // Invert LED in Data Register
-        // PORTB = PORTB xor 0010 0000
-        PORTB = PORTB ^ (1<<LED_GREEN);
+		// CALL SOS IN MORSE  ///.../---/....///
+
+		for(int i = 0 ; i < 3 ; i++){
+			for(int j = 0 ; j < 3 ; j++){
+				PORTB = PORTB ^ (1<<LED_GREEN);
+				_delay_ms(SHORT_DELAY);
+				if(i%2){
+					_delay_ms(DELAY);
+				}
+				PORTB = PORTB ^ (1<<LED_GREEN);
+				_delay_ms(DELAY);
+			}
+			_delay_ms(LONG_DELAY);
+		}
+		_delay_ms(LONG_DELAY);
     }
 
     return 0;

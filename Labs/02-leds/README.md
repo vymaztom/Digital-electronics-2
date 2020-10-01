@@ -108,6 +108,9 @@ int main(void){
 
 ![02-KR](../../Images/02-KRstyle.gif)
 
+Link into project directory [Knight Rider style](Knight Rider style)
+
+
 ## Experiments on your own
 
 1. Connect five LEDs to the microcontroller, modify `02-leds` code, and program an application that will ensure that only one of LED is switched on at a time according in [Knight Rider style](https://www.youtube.com/watch?v=w-P-2LdS6zk).

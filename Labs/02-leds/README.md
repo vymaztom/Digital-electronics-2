@@ -102,7 +102,7 @@ int main(void){
 
 ```
 
-![02-leds](Images/02-leds.jpg)
+![02-leds](../../Images/02-leds.jpg)
 
 
 ## Experiments on your own

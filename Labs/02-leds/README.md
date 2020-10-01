@@ -1,32 +1,4 @@
-# Lab 2: Control of GPIO, LED, push button
 
-
-### Learning objectives
-
-
-
-
-## Preparation tasks (done before the lab at home)
-
-Draw two basic ways to connect a LED to the output pin of the microcontroller: LED active-low, LED active-high. What is the name of the LED pin that is connected to the microcontroller in each case?
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-[Calculate LED resistor value](https://electronicsclub.info/leds.htm) for typical red and blue LEDs.
-
-&nbsp;
-![Clock period](Images/ohms_law.png)
-&nbsp;
 
 | **LED color** | **Supply voltage** | **LED current** | **LED voltage** | **Resistor value** |
 | :-: | :-: | :-: | :-: | :-: |
@@ -38,51 +10,6 @@ Draw two basic ways to connect a LED to the output pin of the microcontroller: L
 R = \frac{V_{SUPPLY}-V_{LED}}{I} =
 ```
 >
-
-Draw the basic ways to connect a push button to the microcontroller input pin: button active-low, button active-high.
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-
-## Part 1: Synchronize Git and create a new folder
-
-When you start working, always synchronize the contents of your working folder and local repository with remote version at GitHub. This way you are sure that you will not lose any of your changes.
-
-Run Git Bash (Windows) of Terminal (Linux) and synchronize repositories.
-
-```bash
-## Windows Git Bash:
-$ cd d:/Documents/
-$ cd your-name/
-$ cd Digital-electronics-2/
-$ git pull
-
-## Linux:
-$ cd
-$ cd Documents/
-$ cd your-name/
-$ cd Digital-electronics-2/
-$ git pull
-```
-
-Create a new working folder `Labs/02-leds` for this exercise.
-
-```bash
-## Windows Git Bash or Linux:
-$ cd Labs/
-$ mkdir 02-leds
-```
-
 
 ## Part 2: Active-low and active-high LEDs
 
@@ -103,7 +30,7 @@ $ mkdir 02-leds
 | 1 | 0 | Output | No | Output Low (Sink) |
 | 1 | 1 | Output | No | Output High (Source) |
 
-See [schematic of Arduino Uno board](../../Docs/arduino_shield.pdf) in docs folder of Digital-electronics-2 repository and find out which pins of ATmega328P can be used as input/output pins. To which pin is the LED L connected? Is it connected as active-low or active-high?
+
 
 | **Port** | **Pin** | **Input/output usage?** |
 | :-: | :-: | :-- |
@@ -133,65 +60,7 @@ See [schematic of Arduino Uno board](../../Docs/arduino_shield.pdf) in docs fold
 |   | 6 | Yes (Arduino pin 6) |
 |   | 7 | Yes (Arduino pin 7) |
 
-Use breadboard (or SimulIDE real time electronic circuit simulator), connect resistor and second LED to Arduino output pin in active-low way. **Let the second LED is connected to port C.**
 
-
-### Version: Atmel Studio 7
-
-Create a new project for ATmega328P within `02-leds` working folder and copy/paste [template code](main.c) to your `main.c` source file.
-
-Complete the control register settings according to the pin to which you have connected the second LED. Program an application that blinks alternately with a pair of LEDs. Use the delay library as in the previous exercise.
-
-Compile the project. Simulate the project in Atmel Studio 7.
-
-Run external programmer in menu **Tools > Send to Arduino UNO** and download the compiled code to Arduino Uno board or load `*.hex` firmware to SimulIDE circuit. Observe the correct function of the application using the flashing LEDs.
-
-
-### Version: Command-line toolchain
-
-Copy `main.c` and `Makefile` files from previous lab to `Labs/02-leds` folder. Check if `firmware.in` settings file exists in `Labs` folder.
-
-Copy/paste [template code](main.c) to your `main.c` source file.
-
-Complete the control register settings according to the pin to which you have connected the second LED. Program an application that blinks alternately with a pair of LEDs. Use the delay library as in the previous exercise.
-
-Compile the project with the `mingw32-make.exe all` (Windows) or `make all` (Linux).
-
-Download the compiled code to Arduino Uno board with `mingw32-make.exe flash` (Windows) or `make flash` (Linux) or load `*.hex` firmware to SimulIDE circuit. Observe the correct function of the application using the flashing LEDs.
-
-
-## Part 3: Push button
-
-Use breadboard (or SimulIDE real time electronic circuit simulator), connect resistor (if internal pull-up resistor is not used) and push button to Arduino input pin in active-low way. **Let the push button is connected to port D.**
-
-Use code from previous part and program an application that toggles LEDs only if push button is pressed. Otherwise, the value of the LEDs does not change.
-
-Configure the pin to which the push button is connected as an input and enable the internal pull-up resistor.
-
-Use Special function registers from [AVR Libc](https://onlinedocs.microchip.com/) to test bit values in control registers:
-
-| **Function** | **Example** | **Description** |
-| :-- | :-- | :-- |
-| `bit_is_set(reg, pin)` | `if (bit_is_set(PINA, 3)) {...}` | Perform the code only if bit number 3 in register PINA is 1 (set) |
-| `bit_is_clear(reg, pin)` | `if (bit_is_clear(PINB, 5)) {...}` | Perform the code only if bit number 5 in register PINB is 0 (clear) |
-| `loop_until_bit_is_set(reg, pin)` | `loop_until_bit_is_set(PIND, 0);` | Stay here until bit number 0 in register PIND becomes 1 |
-| `loop_until_bit_is_clear(reg, pin)` | `loop_until_bit_is_clear(PINA, 7);` | Stay here until bit number 7 in register PINA becomes 0 |
-
-Complete the code, compile it and download to Arduino Uno board or load `*.hex` firmware to SimulIDE circuit. Observe the correct function of the application using the flashing LEDs and the push button.
-
-
-## Part 4: Switch debouncing (hardware implementation only)
-
-*[Bouncing](https://whatis.techtarget.com/definition/debouncing) is the tendency of any two metal contacts in an electronic device to generate multiple signals as the contacts close or open; debouncing is any kind of hardware device or software that ensures that only a single signal will be acted upon for a single opening or closing of a contact.*
-
-![Real push button signal with bouncing](Images/debouncer.png "Sampled push button signal")
-
-Use AVR Libc and time delay library functions to debounce a push button. Create an application that samples the input signal and decides that the push button was pressed based on a series of the same values, eg. four zero bits consecutively present on the input pin.
-
-
-## Clean project and synchronize git
-
-Use [git commands](https://github.com/tomas-fryza/Digital-electronics-2/wiki/Git-useful-commands) to add, commit, and push all local changes to your remote repository. Check the repository at GitHub web page for changes.
 
 
 ## Experiments on your own

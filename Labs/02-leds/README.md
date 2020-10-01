@@ -102,8 +102,11 @@ int main(void){
 
 ```
 
-![02-leds](../../Images/02-leds.jpg)
+![02-leds](../../Images/02-leds.gif)
 
+## Knight Rider style
+
+![02-KR](../../Images/02-KRstyle.gif)
 
 ## Experiments on your own
 

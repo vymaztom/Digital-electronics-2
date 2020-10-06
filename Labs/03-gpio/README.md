@@ -64,7 +64,7 @@ uint16_t calculate(uint8_t x, uint8_t y)
 
 ## Final application
 
-```code
+```c
 
 #define LED_GREEN   PB5		// green LED
 #define LED_RED     PC0		// red	 LED

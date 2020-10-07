@@ -80,13 +80,16 @@ uint16_t calculate(uint8_t x, uint8_t y)
 #include <avr/io.h>
 #include "gpio.h"
 
-int main(void){
+int main(void)
+{
 
     /* GREEN LED */
 	GPIO_config_output(&DDRB, LED_GREEN);
+	GPIO_write_low(&DDRB, LED_GREEN);
 
 	/* RED LED */
 	GPIO_config_output(&DDRC, LED_RED);
+	GPIO_write_low(&DDRC, LED_RED);
 
 	/* BUTTON */
 	GPIO_config_input_pullup(&DDRD, BUTTON);
@@ -95,7 +98,8 @@ int main(void){
 
         _delay_ms(BLINK_DELAY);
 
-		if(GPIO_read(&PIND, BUTTON) == 1){
+		if(GPIO_read(&PIND, BUTTON) == 1)
+		{
 			GPIO_toggle(&PORTB, LED_GREEN);
 			GPIO_toggle(&PORTC, LED_RED);
 		}
@@ -104,6 +108,7 @@ int main(void){
 
     return 0;
 }
+
 
 ```
 

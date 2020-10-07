@@ -1,7 +1,7 @@
 #define LED_GREEN   PB5		// green LED
 #define LED_RED     PC0		// red	 LED
 #define BUTTON     	PD0
-#define BLINK_DELAY 250
+#define BLINK_DELAY 500
 
 #ifndef F_CPU
 #define F_CPU 16000000
@@ -21,7 +21,7 @@ int main(void)
 
 	/* RED LED */
 	GPIO_config_output(&DDRC, LED_RED);
-	GPIO_write_low(&PORTC, LED_RED);
+	GPIO_write_high(&PORTC, LED_RED);
 
 	/* BUTTON */
 	GPIO_config_input_pullup(&DDRD, BUTTON);

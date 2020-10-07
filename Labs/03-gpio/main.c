@@ -17,11 +17,11 @@ int main(void)
 
     /* GREEN LED */
 	GPIO_config_output(&DDRB, LED_GREEN);
-	GPIO_write_low(&DDRB, LED_GREEN);
+	GPIO_write_low(&PORTB, LED_GREEN);
 
 	/* RED LED */
 	GPIO_config_output(&DDRC, LED_RED);
-	GPIO_write_low(&DDRC, LED_RED);
+	GPIO_write_low(&PORTC, LED_RED);
 
 	/* BUTTON */
 	GPIO_config_input_pullup(&DDRD, BUTTON);

@@ -133,6 +133,10 @@ int main(void)
 
 ```
 
+## Demonstration
+
+![03-leds](../../Images/03-leds.gif)
+
 
 ## Lab assignment
 

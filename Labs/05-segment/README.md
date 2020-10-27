@@ -16,6 +16,30 @@
 
 ![05-seg](../../Images/05-segment.gif)
 
+
+# DU 5: Table with snake definition
+
+   | **POSITION** | **A** | **B** | **C** | **D** | **E** | **F** | **G** | **DP** |
+   | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+   | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+   | 1 | 1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 |
+   | 2 | 1 | 1 | 0 | 1 | 1 | 1 | 1 | 1 |
+   | 3 | 1 | 1 | 1 | 0 | 1 | 1 | 1 | 1 |
+   | 4 | 1 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
+   | 5 | 1 | 1 | 1 | 1 | 1 | 0 | 1 | 1 |
+
+```C
+// redefine table of segnemt value to generate snake
+uint8_t segment_value[] = {
+	0b01111111,
+    0b10111111,
+    0b11011111,
+    0b11101111,
+    0b11110111,
+    0b11111011
+};
+```
+
 ## Lab assignment
 
 1. Preparation tasks (done before the lab at home). Submit:

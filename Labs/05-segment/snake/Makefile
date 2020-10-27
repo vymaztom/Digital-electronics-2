@@ -24,9 +24,9 @@
 ########################################################################
 
 SHELL = /bin/sh
-include ../firmware.in
+include ../../firmware.in
 
-LIBRARY_DIR = ../library
+LIBRARY_DIR = ../../library
 
 # The result of wildcard is a space-separated list of the names of
 # existing files that match the pattern.

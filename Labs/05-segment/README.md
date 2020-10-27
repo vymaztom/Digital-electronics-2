@@ -14,6 +14,8 @@
    | 9 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 1 |
 
 
+![05-seg](../../Images/05-segment.gif)
+
 ## Lab assignment
 
 1. Preparation tasks (done before the lab at home). Submit:

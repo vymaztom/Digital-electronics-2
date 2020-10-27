@@ -53,12 +53,6 @@ int main(void)
 
 /* Interrupt service routines ----------------------------------------*/
 /**
-* ISR starts when Timer/Counter0 overflows. Display decimal counter
-*/
-
-
-/* Interrupt service routines ----------------------------------------*/
-/**
  * ISR starts when Timer/Counter1 overflows. Increment decimal counter
  * value and display it on SSD.
  */

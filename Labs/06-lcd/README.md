@@ -79,6 +79,13 @@ Created by https://wavedrom.com/editor.html
    | `lcd_data` | `uint8_t data` | Send data byte to LCD controller. | `lcd_data(customChar[i]);` |
 
 
+## Stopwatch. Submit
+
+![COMUNICATION](../../Images/6-LCD_TIM0.png)
+
+![COMUNICATION](../../Images/06-LCD_progressBAR.gif)
+
+
 
 ## Lab assignment
 

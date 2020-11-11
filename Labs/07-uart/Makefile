@@ -33,7 +33,7 @@ LIBRARY_DIR = ../library
 SRCS := $(wildcard *.c)
 # Add or comment libraries you are using in the project
 SRCS += $(LIBRARY_DIR)/lcd.c
-#SRCS += $(LIBRARY_DIR)/uart.c
+SRCS += $(LIBRARY_DIR)/uart.c
 #SRCS += $(LIBRARY_DIR)/twi.c
 SRCS += $(LIBRARY_DIR)/gpio.c
 ASSRC := $(wildcard *.S)

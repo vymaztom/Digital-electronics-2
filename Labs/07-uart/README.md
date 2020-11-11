@@ -119,9 +119,9 @@ In the lab, we are using [UART library](http://www.peterfleury.epizy.com/avr-sof
    | **Function name** | **Function parameters** | **Description** | **Example** |
    | :-- | :-- | :-- | :-- |
    | `uart_init` | `UART_BAUD_SELECT(9600, F_CPU)` | Initialize UART to 8N1 and set baudrate to 9600&nbsp;Bd | `uart_init(UART_BAUD_SELECT(9600, F_CPU));` |
-   | `uart_getc` |  |  |
-   | `uart_putc` |  |  |
-   | `uart_puts` |  |  |
+   | `uart_getc` | `uart1_getc (void)` | Get received byte from ringbuffer. | `uart1_getc();` |
+   | `uart_putc` | `uart_putc(unsigned char data)` | Put byte to ringbuffer for transmitting via UART. | `uart_putc('A');` |
+   | `uart_puts` | `uart_puts (const char *s)` | Put string to ringbuffer for transmitting via UART. | `uart_puts ("Hello world!");` |
 
 Extend the application from the previous point and send information about the results of the analog to digital conversion and the pressed button to the UART transmitter. Use internal UART module with the following parametres: 8N1 mode, baud rate 9600.
 

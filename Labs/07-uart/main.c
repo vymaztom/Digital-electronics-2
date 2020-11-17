@@ -136,7 +136,4 @@ ISR(ADC_vect)
 	else{
 		lcd_gotoxy(8, 1); lcd_puts("None");
 	}
-
-
-
 }

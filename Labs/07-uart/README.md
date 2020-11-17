@@ -4,12 +4,12 @@
 
    | **Push button** | **PC0[A0] voltage** | **ADC value (calculated)** | **ADC value (measured)** |
    | :-: | :-: | :-: | :-: |
-   | Right  | 0 V | 0 |  |
-   | Up     | 0.495 V | 101 |  |
-   | Down   | 1.203 V | 246 |  |
-   | Left   | 1.969 V | 403 |  |
-   | Select | 3.181 V | 651 |  |
-   | none   | 5 V | 1023 |  |
+   | Right  | 0 V | 0 | 0 |
+   | Up     | 0.495 V | 101 | 101 |
+   | Down   | 1.203 V | 246 | 245 |
+   | Left   | 1.969 V | 403 | 402 |
+   | Select | 3.181 V | 651 | 650 |
+   | none   | 5 V | 1023 | 1022 |
 
 
 ## Part 1: Synchronize repositories and create a new folder
@@ -58,13 +58,18 @@ Copy/paste [template code](main.c) to your `07-uart/main.c` source file.
 
 Add the source files of UART and LCD libraries between the compiled files in `07-uart/Makefile`.
 
-```Makefile
-# Add or comment libraries you are using in the project
-SRCS += $(LIBRARY_DIR)/lcd.c
-SRCS += $(LIBRARY_DIR)/uart.c
-#SRCS += $(LIBRARY_DIR)/twi.c
-#SRCS += $(LIBRARY_DIR)/gpio.c
-#SRCS += $(LIBRARY_DIR)/segment.c
+```
+{signal: [
+  {name: 'TX/RX "D"'	, wave: '10..10..1....'},
+  {name: '', wave: 'x22222222222x', data: ['STA', '0', '0', '1', '0', '0', '0', '1', 'PAR', 'STO', 'STO']},
+  {name: '', wave: 'x22......22.x', data: ['STA', 'b1000100 = "D"', 'PAR', 'STOP']},
+  {name: 'TX/RX "E"'	, wave: '101010..101..'},
+  {name: '', wave: 'x22222222222x', data: ['STA', '1', '0', '1', '0', '0', '0', '1', 'PAR', 'STO', 'STO']},
+  {name: '', wave: 'x22......22.x', data: ['STA', 'b1000101 = "E"', 'PAR', 'STOP']},
+  {name: 'TX/RX "2"'	, wave: '10.10.1.0.1..'},
+  {name: '', wave: 'x22222222222x', data: ['STA', '0', '1', '0', '0', '1', '1', '0', 'PAR', 'STO', 'STO']},
+  {name: '', wave: 'x22......22.x', data: ['STA', 'b0110010 = "2"', 'PAR', 'STOP']},
+]}
 ```
 
 

@@ -4,7 +4,8 @@
 
 Tomáš Vymazal
 
-[Odkaz na GitHub projekt](http://github.com/xxx)
+[Odkaz na GitHub projekt](https://github.com/vymaztom/Digital-electronics-2/tree/master/Labs/Projekt)
+
 
 
 ### Project objectives

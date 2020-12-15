@@ -92,9 +92,9 @@ to byla mocnina 2 aby se dal výsledek snadno a rychle podělit (konstanta je 32
 
 Aplikace pracuje z mnoha mnou napsanými knihovanmi jako jsou například:
 
-* [TWI_LCD](library\TWI_LCD.c)
-* [sinGeneratorEEPROM](library\sinGeneratorEEPROM.c)
-* [FIFO](library\FIFO.c)
+* [TWI_LCD](https://github.com/vymaztom/Digital-electronics-2/blob/master/Labs/Projekt/library/TWI_LCD.c)
+* [sinGeneratorEEPROM](https://github.com/vymaztom/Digital-electronics-2/blob/master/Labs/Projekt/library/sinGeneratorEEPROM.c)
+* [FIFO](https://github.com/vymaztom/Digital-electronics-2/blob/master/Labs/Projekt/library/FIFO.c)
 
 Aplikace dále pracuje s knihovanmi:
 

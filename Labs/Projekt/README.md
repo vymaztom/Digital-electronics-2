@@ -19,7 +19,7 @@ Hardwarová část projektu je rozdělena několik částí. jednotlivé části
 Převodník je poskládán z rezistorové sítě. Ovládá se pomocí 8 vstupních pinů. Každý pin přídává do výsledného signálu jinou hodnotu amplitudy pro DC signál. Při rychlé změněn vstupních hodnot můžeme z tohoto DC signálu vytvořit jiný, například sínusodní průběh.
 
 ### Blok Klavesnice
-![keypad](image/Klavesnice.png)
+![keypad](image/klavesnice.png)
 
 Obvod klávesnice potřebuje část pinu, které jsou nastaveny jako výstupní piny a část pinů, které jsou nastaveny jako vstupní. Z vnitřího zapojení klávesnice totož plyne, že při stisku klývesy dojde pouze k propojení vodičů, a to vodiče definující řádek a sloupec. Proto je potřeba stis jedné klávesy detekovat nastevením vysoké hodnty na výstupním pinu a hledat, kam se nám promítne na výstupu. Pořadí výstupního pinu a vstupního pak následně jednoznačně definuje stisknutou klávesnici.
 
@@ -104,7 +104,7 @@ Aplikace dále pracuje s knihovanmi:
 
 #### Dokumentace Doxygen
 
-[Dokumentace k projektu](\doc\html)
+[Dokumentace k projektu](https://github.com/vymaztom/Digital-electronics-2/tree/master/Labs/Projekt/doc/html)
 
 ## Video - Animace
 

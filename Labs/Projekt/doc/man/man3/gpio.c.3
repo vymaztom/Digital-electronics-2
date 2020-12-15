@@ -1,0 +1,170 @@
+.TH "library/gpio.c" 3 "Tue Dec 15 2020" "Version v1.0" "Waveform generator with R-2R DAC" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+library/gpio.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'gpio\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBGPIO_config_output\fP (volatile uint8_t *reg_name, uint8_t pin_num)"
+.br
+.RI "Configure one output pin in Data Direction Register\&. "
+.ti -1c
+.RI "void \fBGPIO_config_input_nopull\fP (volatile uint8_t *reg_name, uint8_t pin_num)"
+.br
+.RI "Configure one input pin wihout pull-ap resistor in Data Direction Register\&. "
+.ti -1c
+.RI "void \fBGPIO_config_input_pullup\fP (volatile uint8_t *reg_name, uint8_t pin_num)"
+.br
+.RI "Configure one input pin with active pull-up resistor in Data Direction Register\&. "
+.ti -1c
+.RI "void \fBGPIO_write_low\fP (volatile uint8_t *reg_name, uint8_t pin_num)"
+.br
+.RI "Configure one output pin to low stata in Data Register\&. "
+.ti -1c
+.RI "void \fBGPIO_write_high\fP (volatile uint8_t *reg_name, uint8_t pin_num)"
+.br
+.RI "Configure one output pin to hight stata in Data Register\&. "
+.ti -1c
+.RI "void \fBGPIO_toggle\fP (volatile uint8_t *reg_name, uint8_t pin_num)"
+.br
+.RI "Configure one output pin to opposed value in Data Register\&. "
+.ti -1c
+.RI "uint8_t \fBGPIO_read\fP (volatile uint8_t *reg_name, uint8_t pin_num)"
+.br
+.RI "Return value of one input pin in Input Pins Address\&. "
+.ti -1c
+.RI "uint16_t \fBGPIO_analogRead10\fP (uint8_t pin_num)"
+.br
+.RI "Return value (uint16_t) AD converotr\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "uint16_t GPIO_analogRead10 (uint8_t pin_num)"
+
+.PP
+Return value (uint16_t) AD converotr\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpin_num\fP - Pin designation in the interval 0 to 7 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file gpio\&.c\&.
+.SS "void GPIO_config_input_nopull (volatile uint8_t * reg_name, uint8_t pin_num)"
+
+.PP
+Configure one input pin wihout pull-ap resistor in Data Direction Register\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIreg_name\fP - Address of Data Direction Register, such as &DDRA, &DDRB, \&.\&.\&. 
+.br
+\fIpin_num\fP - Pin designation in the interval 0 to 7 
+.RE
+.PP
+
+.PP
+Definition at line 22 of file gpio\&.c\&.
+.SS "void GPIO_config_input_pullup (volatile uint8_t * reg_name, uint8_t pin_num)"
+
+.PP
+Configure one input pin with active pull-up resistor in Data Direction Register\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIreg_name\fP - Address of Data Direction Register, such as &DDRA, &DDRB, \&.\&.\&. 
+.br
+\fIpin_num\fP - Pin designation in the interval 0 to 7 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file gpio\&.c\&.
+.SS "void GPIO_config_output (volatile uint8_t * reg_name, uint8_t pin_num)"
+
+.PP
+Configure one output pin in Data Direction Register\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIreg_name\fP - Address of Data Direction Register, such as &DDRA, &DDRB, \&.\&.\&. 
+.br
+\fIpin_num\fP - Pin designation in the interval 0 to 7 
+.RE
+.PP
+
+.PP
+Definition at line 16 of file gpio\&.c\&.
+.SS "uint8_t GPIO_read (volatile uint8_t * reg_name, uint8_t pin_num)"
+
+.PP
+Return value of one input pin in Input Pins Address\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIreg_name\fP - Address of Input Pins Address, such as &PINA, &PINB, \&.\&.\&. 
+.br
+\fIpin_num\fP - Pin designation in the interval 0 to 7 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file gpio\&.c\&.
+.SS "void GPIO_toggle (volatile uint8_t * reg_name, uint8_t pin_num)"
+
+.PP
+Configure one output pin to opposed value in Data Register\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIreg_name\fP - Address of Data Register, such as &PORTA, &PORTB, \&.\&.\&. 
+.br
+\fIpin_num\fP - Pin designation in the interval 0 to 7 
+.RE
+.PP
+
+.PP
+Definition at line 50 of file gpio\&.c\&.
+.SS "void GPIO_write_high (volatile uint8_t * reg_name, uint8_t pin_num)"
+
+.PP
+Configure one output pin to hight stata in Data Register\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIreg_name\fP - Address of Data Register, such as &PORTA, &PORTB, \&.\&.\&. 
+.br
+\fIpin_num\fP - Pin designation in the interval 0 to 7 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file gpio\&.c\&.
+.SS "void GPIO_write_low (volatile uint8_t * reg_name, uint8_t pin_num)"
+
+.PP
+Configure one output pin to low stata in Data Register\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIreg_name\fP - Address of Data Register, such as &PORTA, &PORTB, \&.\&.\&. 
+.br
+\fIpin_num\fP - Pin designation in the interval 0 to 7 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file gpio\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Waveform generator with R-2R DAC from the source code\&.

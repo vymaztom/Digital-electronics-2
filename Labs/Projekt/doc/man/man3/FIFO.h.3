@@ -1,0 +1,96 @@
+.TH "library/include/FIFO.h" 3 "Tue Dec 15 2020" "Version v1.0" "Waveform generator with R-2R DAC" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+library/include/FIFO.h \- Data structure of Buffer, implemented linked list with FIFO specification\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <avr/io\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBFIFO_init\fP ()"
+.br
+.RI "Init Buffer\&. "
+.ti -1c
+.RI "uint8_t \fBFIFO_add\fP (void *\fBdata\fP)"
+.br
+.RI "add member into Buffer "
+.ti -1c
+.RI "void * \fBFIFO_get\fP ()"
+.br
+.RI "remove one member "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Data structure of Buffer, implemented linked list with FIFO specification\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Tomáš Vymazal 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+15 Dec 2020 
+.RE
+.PP
+\fBCopyright\fP
+.RS 4
+2020 Tomáš Vymazal 
+.RE
+.PP
+
+.PP
+Definition in file \fBFIFO\&.h\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "uint8_t FIFO_add (void * data)"
+
+.PP
+add member into Buffer 
+.PP
+\fBParameters\fP
+.RS 4
+\fI<name>\fP <parameter_description> 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+1 if add was successfully otherwise 0 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file FIFO\&.c\&.
+.SS "void* FIFO_get ()"
+
+.PP
+remove one member 
+.PP
+\fBReturns\fP
+.RS 4
+adrress into strucrure  do not forget redefine return value into correct address 
+.RE
+.PP
+
+.PP
+Definition at line 61 of file FIFO\&.c\&.
+.SS "void FIFO_init ()"
+
+.PP
+Init Buffer\&. <details> 
+.PP
+Definition at line 34 of file FIFO\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Waveform generator with R-2R DAC from the source code\&.

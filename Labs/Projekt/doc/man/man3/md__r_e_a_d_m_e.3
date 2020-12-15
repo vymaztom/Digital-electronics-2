@@ -1,0 +1,39 @@
+.TH "md__r_e_a_d_m_e" 3 "Tue Dec 15 2020" "Version v1.0" "Waveform generator with R-2R DAC" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__r_e_a_d_m_e \- DAC převodník typu R-2R, generator funkcí 
+
+.SS "Projekt zpracován: <a href='https://github\&.com/vymaztom'>Tomáš Vymazal</a>"
+\fCOdkaz na GitHub projekt\fP
+.SS "Cíl projektu"
+Popis funkce R-2R ladder digitálně analogového převodníku (Digital to Analog Converter, DAC)\&. Aplikace generátoru analogového signálu využívající alespoň 8bitový DAC; několik přednastavených typů signálů; displej; ovládání pomocí klávesnice 4x3; (volitelně možnost generování tónu DTMF, Dual-Tone Multiple Frequencies); odesílání zajímavých informací o stavu aplikace na UART\&.
+.SH "Popis hardwaru"
+.PP
+Hardwarová část projektu je rozdělena několik částí\&. jednotlivé části jsou logické bloky, kde kažká má svoji určitou úlohu\&. Hlavní níže nepopisovanou částí je MCU, ta obsahuje mikrokontrolér ATmega328-P\&.
+.SS "Blok DAC převodníku typu R-2R"
+.PP
+Převodník je poskládán z rezistorové sítě\&. Ovládá se pomocí 8 vstupních pinů\&. Každý pin přídává do výsledného signálu jinou hodnotu amplitudy pro DC signál\&. Při rychlé změněn vstupních hodnot můžeme z tohoto DC signálu vytvořit jiný, například sínusodní průběh\&.
+.SS "Blok Klavesnice"
+.PP
+Obvod klávesnice potřebuje část pinu, které jsou nastaveny jako výstupní piny a část pinů, které jsou nastaveny jako vstupní\&. Z vnitřího zapojení klávesnice totož plyne, že při stisku klývesy dojde pouze k propojení vodičů, a to vodiče definující řádek a sloupec\&. Proto je potřeba stis jedné klávesy detekovat nastevením vysoké hodnty na výstupním pinu a hledat, kam se nám promítne na výstupu\&. Pořadí výstupního pinu a vstupního pak následně jednoznačně definuje stisknutou klávesnici\&.
+.PP
+Tento způsob vyčítání je doplněn o encodér na výstupu z klávesnice, díky kterému můžeme, snížit počet použitých pinů, v našem případě z 5 na 4, pro méně pinů by zapoení nemělo smysl protože by nedosšlo k úspoře pinu\&. Toto zapojení má jednu obrovskou výhodu\&. Tou je že binární hodnota ABCD nám rovnou definuje číslo sloupce tedy pokud zmáčkneme klávesu +, která se nachází v 5 sloupci\&. Encodér vrátí hodnotu 0101 (ABCD), což po třevodu do dekadické soustavy je hodnota 5\&.
+.SS "Blok displeje"
+.PP
+Pro tento projekt je použitý klasický LCD display s hd44780\&. Rozšížení toho projetu je přípojení diplaje na I2C/TWI sběrnici, díky tomu můžeme display ovládat pouze pomocí 2 pinů na MCU\&. Nastavená adresa TWI sběrnice pro slave (nejsem rasista!!! ; otrok != černý, viz historie Římá) zařízení je 32 DEC, neboli 20 HEX\&. K tomu zapojení bylo potřeba vytvořit pomocnou knihovnu, bude posána níže\&.
+.SS "Kompletní schéma zapojení"
+.PP
+Po popsání jednotlivých funkčních bloků, není potřeba k celkovéu schéma nic dodávat, protože nám pouze říká, kam jsou jednlitvé ovládací sběrnice přípojeny, respektve k terým pinům MCU\&.
+.SH "Popis kódu a simulace"
+.PP
+Write your text here\&.
+.SH "Video - Animace"
+.PP
+Write your text here\&.
+.SH "Zdroje"
+.PP
+.IP "1." 4
+Write your text here\&. 
+.PP
+

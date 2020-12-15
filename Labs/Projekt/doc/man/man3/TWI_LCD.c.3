@@ -1,0 +1,275 @@
+.TH "library/TWI_LCD.c" 3 "Tue Dec 15 2020" "Version v1.0" "Waveform generator with R-2R DAC" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+library/TWI_LCD.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <avr/io\&.h>\fP
+.br
+\fC#include <util/delay\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include 'twi\&.h'\fP
+.br
+\fC#include 'uart\&.h'\fP
+.br
+\fC#include 'TWI_LCD_definitions\&.h'\fP
+.br
+\fC#include 'TWI_LCD\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBtwi_lcd_print_voltage\fP (uint8_t value, uint8_t pointer)"
+.br
+.RI "print to act menu new value of voltage variable "
+.ti -1c
+.RI "void \fBtwi_lcd_print_freq\fP (uint16_t value, uint8_t pointer)"
+.br
+.RI "print to act menu new value of frequency variable "
+.ti -1c
+.RI "void \fBtwi_lcd_print_menu\fP (enum \fBSTATE_GENERATOR\fP kind, uint16_t \fBVOLATGE_G\fP, uint16_t \fBFREQ_G\fP, uint8_t \fBPOINTER_G\fP)"
+.br
+.RI "print to LCD actual menu by state with seted params "
+.ti -1c
+.RI "void \fBtwi_lcd_print_number\fP (uint16_t value)"
+.br
+.RI "Function for print number\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_printChar\fP (char c)"
+.br
+.RI "Print one char into LCD\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_print\fP (const char *\fBdata\fP)"
+.br
+.RI "Print string int LCD\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_send_L4bit\fP (uint8_t \fBdata\fP)"
+.br
+.RI "Send 4 bits into TWI controler\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_send\fP (uint8_t \fBdata\fP, uint8_t RS)"
+.br
+.RI "Send 8 bits into TWI controler\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_init\fP (uint8_t start_parametrs)"
+.br
+.RI "Init LCD, and TWI\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_set_lines\fP ()"
+.br
+.RI "Set dispaly into 4 bit mode with 2 lines\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_gotoxy\fP (uint8_t x, uint8_t y)"
+.br
+.RI "Move cursor into position\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_display_shift_left\fP ()"
+.br
+.RI "Move text on left\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_display_shift_right\fP ()"
+.br
+.RI "Move text on right\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_clean\fP ()"
+.br
+.RI "Clean display\&. "
+.ti -1c
+.RI "void \fBtwi_lcd_data\fP (uint8_t addr, uint8_t *\fBdata\fP)"
+.br
+.RI "Write data into internal CGROM\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void twi_lcd_clean ()"
+
+.PP
+Clean display\&. Clean all LCD and go to home 
+.PP
+Definition at line 206 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_data (uint8_t addr, uint8_t * data)"
+
+.PP
+Write data into internal CGROM\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIuint8_t\fP addr address into CGROM 
+.br
+\fIuint8_t*\fP data matrix of data lenght of 8 
+.RE
+.PP
+
+.PP
+Definition at line 211 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_display_shift_left ()"
+
+.PP
+Move text on left\&. move all chars into left 
+.PP
+Definition at line 196 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_display_shift_right ()"
+
+.PP
+Move text on right\&. move all chars into right 
+.PP
+Definition at line 201 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_gotoxy (uint8_t x, uint8_t y)"
+
+.PP
+Move cursor into position\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIuint8_t\fP x vertical value 
+.br
+\fIuint8_t\fP y horizontal value 
+.RE
+.PP
+
+.PP
+Definition at line 169 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_init (uint8_t start_parametrs)"
+
+.PP
+Init LCD, and TWI\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIuint8_t\fP star_parametrs mask of start condition  start_parametrs = TWI_LCD_DISPLAY_ON | TWI_LCD_DISPLAY_BLINK_ON \&.\&.\&. 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_print (const char * data)"
+
+.PP
+Print string int LCD\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIconst\fP char* data String value to print  intput must be string or list of chars witch ends with '\\0' 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_print_freq (uint16_t value, uint8_t pointer)"
+
+.PP
+print to act menu new value of frequency variable 
+.PP
+\fBParameters\fP
+.RS 4
+\fIuint16_t\fP value global value of setted frequency 
+.br
+\fIuint8_t\fP pointer global value 0, 1, wiht define selected variable in menu  called only if global frequency had been changed 
+.RE
+.PP
+
+.PP
+Definition at line 43 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_print_menu (enum \fBSTATE_GENERATOR\fP kind, uint16_t VOLATGE_G, uint16_t FREQ_G, uint8_t POINTER_G)"
+
+.PP
+print to LCD actual menu by state with seted params 
+.PP
+\fBParameters\fP
+.RS 4
+\fIenum\fP STATE_GENERATOR kind actual state 
+.br
+\fIuint16_t\fP VOLATGE_G global value of setted max voltage 
+.br
+\fIuint16_t\fP FREQ_G global value of setted frequency 
+.br
+\fIuint8_t\fP POINTER_G global value 0, 1, wiht define selected variable in menu  called only if state had been changed 
+.RE
+.PP
+
+.PP
+Definition at line 58 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_print_number (uint16_t value)"
+
+.PP
+Function for print number\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIuint16_t\fP value value to print  unsigned discreet value 
+.RE
+.PP
+
+.PP
+Definition at line 103 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_print_voltage (uint8_t value, uint8_t pointer)"
+
+.PP
+print to act menu new value of voltage variable 
+.PP
+\fBParameters\fP
+.RS 4
+\fIuint16_t\fP value global value of setted max voltage 
+.br
+\fIuint8_t\fP pointer global value 0, 1, wiht define selected variable in menu  called only if global voltage had been changed 
+.RE
+.PP
+
+.PP
+Definition at line 17 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_printChar (char c)"
+
+.PP
+Print one char into LCD\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIchar\fP c value to print  value of char must be from 33 to 127, for regular europe chars 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_send (uint8_t data, uint8_t RS)"
+
+.PP
+Send 8 bits into TWI controler\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIuint8_t\fP data send 8 bit into TWI 
+.br
+\fIuint8_t\fP RS send RS bit value into TWI 
+.RE
+.PP
+
+.PP
+Definition at line 138 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_send_L4bit (uint8_t data)"
+
+.PP
+Send 4 bits into TWI controler\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIuint8_t\fP data send 4 LAST bit into TWI 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file TWI_LCD\&.c\&.
+.SS "void twi_lcd_set_lines ()"
+
+.PP
+Set dispaly into 4 bit mode with 2 lines\&. Called in intit function 
+.PP
+Definition at line 164 of file TWI_LCD\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Waveform generator with R-2R DAC from the source code\&.

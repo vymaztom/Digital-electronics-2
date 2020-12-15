@@ -24,15 +24,14 @@
 ########################################################################
 
 SHELL = /bin/sh
-include ../firmware.in
+include firmware.in
 
-LIBRARY_DIR = ../library
+LIBRARY_DIR = library
 
 # The result of wildcard is a space-separated list of the names of
 # existing files that match the pattern.
 SRCS := $(wildcard *.c)
 # Add or comment libraries you are using in the project
-# SRCS += $(LIBRARY_DIR)/lcd.c
 SRCS += $(LIBRARY_DIR)/uart.c
 SRCS += $(LIBRARY_DIR)/twi.c
 SRCS += $(LIBRARY_DIR)/gpio.c

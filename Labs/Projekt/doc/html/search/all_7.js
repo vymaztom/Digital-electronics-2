@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['g_5fdtfm_51',['G_DTFM',['../sin_generator_e_e_p_r_o_m_8h.html#a9c2677b4a3dd577bda7aa8882ac2ad91abe4cc483ca327582dcd4581120d0b572',1,'sinGeneratorEEPROM.h']]],
+  ['g_5ffree_52',['G_FREE',['../sin_generator_e_e_p_r_o_m_8h.html#a9c2677b4a3dd577bda7aa8882ac2ad91a408c8f6e606cd6afd45469235989a60e',1,'sinGeneratorEEPROM.h']]],
+  ['g_5fnext_5fbutton_53',['g_next_button',['../main_8c.html#a0afd577d5555dd3fb9482b20b0572f24',1,'main.c']]],
+  ['g_5fpause_54',['G_PAUSE',['../sin_generator_e_e_p_r_o_m_8h.html#a9c2677b4a3dd577bda7aa8882ac2ad91abeae462297e4e51d9519e563fcbbb742',1,'sinGeneratorEEPROM.h']]],
+  ['g_5fsawtooth_55',['G_SAWTOOTH',['../sin_generator_e_e_p_r_o_m_8h.html#a9c2677b4a3dd577bda7aa8882ac2ad91a712f5ebc393f04751e5a2a5392c2518f',1,'sinGeneratorEEPROM.h']]],
+  ['g_5fsine_56',['G_SINE',['../sin_generator_e_e_p_r_o_m_8h.html#a9c2677b4a3dd577bda7aa8882ac2ad91aaab0943e022b0fb0ee1b66d710faa6a6',1,'sinGeneratorEEPROM.h']]],
+  ['g_5fsquare_57',['G_SQUARE',['../sin_generator_e_e_p_r_o_m_8h.html#a9c2677b4a3dd577bda7aa8882ac2ad91ad38ab5967f8da3756e6c4bdce8e83600',1,'sinGeneratorEEPROM.h']]],
+  ['g_5ftriabgle_58',['G_TRIABGLE',['../sin_generator_e_e_p_r_o_m_8h.html#a9c2677b4a3dd577bda7aa8882ac2ad91a2f0c37d2bdcd8ca495adbb41fb9003ad',1,'sinGeneratorEEPROM.h']]],
+  ['generatesinintoeeprom_59',['generateSinIntoEEPROM',['../sin_generator_e_e_p_r_o_m_8h.html#a77fe33050a315ce550c5785f96192d40',1,'generateSinIntoEEPROM(uint16_t numberOfpoints, const uint8_t *addr):&#160;sinGeneratorEEPROM.c'],['../sin_generator_e_e_p_r_o_m_8c.html#a77fe33050a315ce550c5785f96192d40',1,'generateSinIntoEEPROM(uint16_t numberOfpoints, const uint8_t *addr):&#160;sinGeneratorEEPROM.c'],['../sin_generator_8c.html#afe574baaa6f2b7a44ec68c77a5348a19',1,'generateSinIntoEEPROM(uint8_t numberOfpoints, const uint8_t *addr):&#160;sinGenerator.c']]],
+  ['gpio_2ec_60',['gpio.c',['../gpio_8c.html',1,'']]],
+  ['gpio_2eh_61',['gpio.h',['../gpio_8h.html',1,'']]],
+  ['gpio_5fanalogread10_62',['GPIO_analogRead10',['../gpio_8c.html#a4a6c842ded05201315654ddafef3d539',1,'GPIO_analogRead10(uint8_t pin_num):&#160;gpio.c'],['../gpio_8h.html#a4a6c842ded05201315654ddafef3d539',1,'GPIO_analogRead10(uint8_t pin_num):&#160;gpio.c']]],
+  ['gpio_5fconfig_5finput_5fnopull_63',['GPIO_config_input_nopull',['../gpio_8c.html#a939ef6c419d27c29f0b4bf23d4cbab1b',1,'GPIO_config_input_nopull(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c'],['../gpio_8h.html#a939ef6c419d27c29f0b4bf23d4cbab1b',1,'GPIO_config_input_nopull(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c']]],
+  ['gpio_5fconfig_5finput_5fpullup_64',['GPIO_config_input_pullup',['../gpio_8c.html#af973893e5f4c00cd24ce70eb57a5310a',1,'GPIO_config_input_pullup(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c'],['../gpio_8h.html#af973893e5f4c00cd24ce70eb57a5310a',1,'GPIO_config_input_pullup(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c']]],
+  ['gpio_5fconfig_5foutput_65',['GPIO_config_output',['../gpio_8c.html#aea5357ef2716c0bb9889b092e5877589',1,'GPIO_config_output(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c'],['../gpio_8h.html#aea5357ef2716c0bb9889b092e5877589',1,'GPIO_config_output(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c']]],
+  ['gpio_5fread_66',['GPIO_read',['../gpio_8c.html#acfaad70b52775f53bd2d9e29c00ec85d',1,'GPIO_read(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c'],['../gpio_8h.html#acfaad70b52775f53bd2d9e29c00ec85d',1,'GPIO_read(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c']]],
+  ['gpio_5ftoggle_67',['GPIO_toggle',['../gpio_8c.html#a5fae8d81d3a1deefeb6d5344561505f6',1,'GPIO_toggle(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c'],['../gpio_8h.html#a5fae8d81d3a1deefeb6d5344561505f6',1,'GPIO_toggle(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c']]],
+  ['gpio_5fwrite_5fhigh_68',['GPIO_write_high',['../gpio_8c.html#a02ac59d8305bc637a91eae64966e7ab3',1,'GPIO_write_high(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c'],['../gpio_8h.html#a02ac59d8305bc637a91eae64966e7ab3',1,'GPIO_write_high(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c']]],
+  ['gpio_5fwrite_5flow_69',['GPIO_write_low',['../gpio_8c.html#aa52123f00ace3e1f172d3daa7089a8f5',1,'GPIO_write_low(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c'],['../gpio_8h.html#aa52123f00ace3e1f172d3daa7089a8f5',1,'GPIO_write_low(volatile uint8_t *reg_name, uint8_t pin_num):&#160;gpio.c']]]
+];

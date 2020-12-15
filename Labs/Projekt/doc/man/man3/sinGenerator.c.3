@@ -1,0 +1,75 @@
+.TH "testCPrograms/sinGenerator.c" 3 "Tue Dec 15 2020" "Version v1.0" "Waveform generator with R-2R DAC" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+testCPrograms/sinGenerator.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTWO_PI\fP   6\&.283185307179586476925286766559"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "uint8_t \fBMyRound\fP (float value)"
+.br
+.RI "Round flout into uint8_t\&. "
+.ti -1c
+.RI "void \fBgenerateSinIntoEEPROM\fP (uint8_t numberOfpoints, const uint8_t *addr)"
+.br
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define TWO_PI   6\&.283185307179586476925286766559"
+
+.PP
+Definition at line 7 of file sinGenerator\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void generateSinIntoEEPROM (uint8_t numberOfpoints, const uint8_t * addr)"
+
+.PP
+Definition at line 23 of file sinGenerator\&.c\&.
+.SS "int main ()"
+
+.PP
+Definition at line 32 of file sinGenerator\&.c\&.
+.SS "uint8_t MyRound (float value)"
+
+.PP
+Round flout into uint8_t\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfloat\fP value input float value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+uint8_t value from 0 to 255 
+.RE
+.PP
+
+.PP
+Definition at line 9 of file sinGenerator\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Waveform generator with R-2R DAC from the source code\&.

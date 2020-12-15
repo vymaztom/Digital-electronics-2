@@ -1,0 +1,170 @@
+.TH "library/include/sinGeneratorEEPROM.h" 3 "Tue Dec 15 2020" "Version v1.0" "Waveform generator with R-2R DAC" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+library/include/sinGeneratorEEPROM.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <avr/io\&.h>\fP
+.br
+\fC#include <avr/interrupt\&.h>\fP
+.br
+\fC#include <avr/eeprom\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBfreq\fP"
+.br
+.RI "Structure for define frequency and data for generating wave\&. "
+.ti -1c
+.RI "struct \fBbutton\fP"
+.br
+.RI "Pressed button, definned by to frequency\&. "
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTWO_PI\fP   6\&.283185307179586476925286766559"
+.br
+.ti -1c
+.RI "#define \fBDEG_TO_RAD\fP   0\&.017453292519943295769236907684886"
+.br
+.ti -1c
+.RI "#define \fBRAD_TO_DEG\fP   57\&.295779513082320876798154814105"
+.br
+.ti -1c
+.RI "#define \fBDAC_FAST\fP(value)   PORTB = value;"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBfreq\fP \fBfreq_t\fP"
+.br
+.RI "Structure for define frequency and data for generating wave\&. "
+.ti -1c
+.RI "typedef struct \fBbutton\fP \fBbutton_t\fP"
+.br
+.RI "Pressed button, definned by to frequency\&. "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSTATE_GENERATOR\fP { \fBG_DTFM\fP, \fBG_SINE\fP, \fBG_SQUARE\fP, \fBG_TRIABGLE\fP, \fBG_SAWTOOTH\fP, \fBG_PAUSE\fP, \fBG_FREE\fP }"
+.br
+.RI "generator states "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "uint8_t \fBMyRound\fP (float value)"
+.br
+.RI "Round flout into uint8_t\&. "
+.ti -1c
+.RI "void \fBgenerateSinIntoEEPROM\fP (uint16_t numberOfpoints, const uint8_t *addr)"
+.br
+.RI "Generate data into EEPROM\&. "
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define DAC_FAST(value)   PORTB = value;"
+write data into DAC faster than assembler function \fBDAC()\fP 
+.PP
+Definition at line 66 of file sinGeneratorEEPROM\&.h\&.
+.SS "#define DEG_TO_RAD   0\&.017453292519943295769236907684886"
+
+.PP
+Definition at line 23 of file sinGeneratorEEPROM\&.h\&.
+.SS "#define RAD_TO_DEG   57\&.295779513082320876798154814105"
+
+.PP
+Definition at line 27 of file sinGeneratorEEPROM\&.h\&.
+.SS "#define TWO_PI   6\&.283185307179586476925286766559"
+
+.PP
+Definition at line 19 of file sinGeneratorEEPROM\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBbutton\fP \fBbutton_t\fP"
+
+.PP
+Pressed button, definned by to frequency\&. 
+.SS "typedef struct \fBfreq\fP \fBfreq_t\fP"
+
+.PP
+Structure for define frequency and data for generating wave\&. 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBSTATE_GENERATOR\fP"
+
+.PP
+generator states 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIG_DTFM \fP\fP
+.TP
+\fB\fIG_SINE \fP\fP
+.TP
+\fB\fIG_SQUARE \fP\fP
+.TP
+\fB\fIG_TRIABGLE \fP\fP
+.TP
+\fB\fIG_SAWTOOTH \fP\fP
+.TP
+\fB\fIG_PAUSE \fP\fP
+.TP
+\fB\fIG_FREE \fP\fP
+.PP
+Definition at line 47 of file sinGeneratorEEPROM\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void generateSinIntoEEPROM (uint16_t numberOfpoints, const uint8_t * addr)"
+
+.PP
+Generate data into EEPROM\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIuint16_t\fP numberOfpoints define number of samples for general sine wave 
+.br
+\fIconst\fP uint8_t* addr start address of data 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file sinGeneratorEEPROM\&.c\&.
+.SS "uint8_t MyRound (float value)"
+
+.PP
+Round flout into uint8_t\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfloat\fP value input float value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+uint8_t value from 0 to 255 
+.RE
+.PP
+
+.PP
+Definition at line 20 of file sinGeneratorEEPROM\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Waveform generator with R-2R DAC from the source code\&.

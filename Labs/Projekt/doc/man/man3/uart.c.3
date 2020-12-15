@@ -1,0 +1,132 @@
+.TH "library/uart.c" 3 "Tue Dec 15 2020" "Version v1.0" "Waveform generator with R-2R DAC" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+library/uart.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <avr/io\&.h>\fP
+.br
+\fC#include <avr/interrupt\&.h>\fP
+.br
+\fC#include <avr/pgmspace\&.h>\fP
+.br
+\fC#include 'uart\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBUART_RX_BUFFER_MASK\fP   ( \fBUART_RX_BUFFER_SIZE\fP \- 1)"
+.br
+.ti -1c
+.RI "#define \fBUART_TX_BUFFER_MASK\fP   ( \fBUART_TX_BUFFER_SIZE\fP \- 1)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBif\fP (\fBtmphead\fP==UART_RxTail)"
+.br
+.ti -1c
+.RI "\fBif\fP (UART_TxHead !=UART_TxTail)"
+.br
+.ti -1c
+.RI "void \fBuart_init\fP (unsigned int baudrate)"
+.br
+.RI "Initialize UART and set baudrate\&. "
+.ti -1c
+.RI "unsigned int \fBuart_getc\fP (void)"
+.br
+.RI "Get received byte from ringbuffer\&. "
+.ti -1c
+.RI "void \fBuart_putc\fP (unsigned char \fBdata\fP)"
+.br
+.RI "Put byte to ringbuffer for transmitting via UART\&. "
+.ti -1c
+.RI "void \fBuart_puts\fP (const char *s)"
+.br
+.RI "Put string to ringbuffer for transmitting via UART\&. "
+.ti -1c
+.RI "void \fBuart_puts_p\fP (const char *progmem_s)"
+.br
+.RI "Put string from program memory to ringbuffer for transmitting via UART\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "unsigned char \fBdata\fP"
+.br
+.ti -1c
+.RI "unsigned char \fBusr\fP = UART0_STATUS"
+.br
+.ti -1c
+.RI "unsigned char \fBlastRxError\fP = 0"
+.br
+.ti -1c
+.RI "\fBtmphead\fP = ( UART_RxHead + 1) & \fBUART_RX_BUFFER_MASK\fP"
+.br
+.ti -1c
+.RI "\fBelse\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define UART_RX_BUFFER_MASK   ( \fBUART_RX_BUFFER_SIZE\fP \- 1)"
+
+.PP
+Definition at line 50 of file uart\&.c\&.
+.SS "#define UART_TX_BUFFER_MASK   ( \fBUART_TX_BUFFER_SIZE\fP \- 1)"
+
+.PP
+Definition at line 51 of file uart\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "if (\fBtmphead\fP = \fC= UART_RxTail\fP)"
+
+.PP
+Definition at line 391 of file uart\&.c\&.
+.SS "if (UART_TxHead ! = \fCUART_TxTail\fP)"
+
+.PP
+Definition at line 417 of file uart\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "data"
+\fBInitial value:\fP
+.PP
+.nf
+{
+    unsigned char tmphead
+.fi
+.PP
+Definition at line 368 of file uart\&.c\&.
+.SS "else"
+\fBInitial value:\fP
+.PP
+.nf
+{
+        
+        UART_RxHead = tmphead
+.fi
+.PP
+Definition at line 396 of file uart\&.c\&.
+.SS "unsigned char lastRxError = 0"
+
+.PP
+Definition at line 370 of file uart\&.c\&.
+.SS "tmphead = ( UART_RxHead + 1) & \fBUART_RX_BUFFER_MASK\fP"
+
+.PP
+Definition at line 389 of file uart\&.c\&.
+.SS "usr = UART0_STATUS"
+
+.PP
+Definition at line 369 of file uart\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Waveform generator with R-2R DAC from the source code\&.

@@ -1,0 +1,322 @@
+.TH "main.c" 3 "Tue Dec 15 2020" "Version v1.0" "Waveform generator with R-2R DAC" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+main.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <avr/io\&.h>\fP
+.br
+\fC#include <avr/interrupt\&.h>\fP
+.br
+\fC#include <avr/eeprom\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+\fC#include 'timer\&.h'\fP
+.br
+\fC#include 'gpio\&.h'\fP
+.br
+\fC#include 'uart\&.h'\fP
+.br
+\fC#include 'twi\&.h'\fP
+.br
+\fC#include 'FIFO\&.h'\fP
+.br
+\fC#include 'TWI_LCD\&.h'\fP
+.br
+\fC#include 'sinGeneratorEEPROM\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBF_CPU\fP   16000000"
+.br
+.ti -1c
+.RI "#define \fBDDRG\fP   DDRB"
+.br
+.ti -1c
+.RI "#define \fBPORTG\fP   PORTB"
+.br
+.ti -1c
+.RI "#define \fBf697\fP   697"
+.br
+.ti -1c
+.RI "#define \fBf770\fP   770"
+.br
+.ti -1c
+.RI "#define \fBf852\fP   852"
+.br
+.ti -1c
+.RI "#define \fBf941\fP   941"
+.br
+.ti -1c
+.RI "#define \fBf1209\fP   1209"
+.br
+.ti -1c
+.RI "#define \fBf1336\fP   1336"
+.br
+.ti -1c
+.RI "#define \fBf1477\fP   1477"
+.br
+.ti -1c
+.RI "#define \fBDTFM_START_DATA_ADDR\fP   255;"
+.br
+.ti -1c
+.RI "#define \fBTIME_OF_SAMPLE\fP   0\&.000025"
+.br
+.ti -1c
+.RI "#define \fBNUMBER_OF_SAMPLES\fP   255"
+.br
+.ti -1c
+.RI "#define \fBCOEFICIENT_MULTIPLE_DEC\fP   8"
+.br
+.ti -1c
+.RI "#define \fBCOEFICIENT_MULTIPLE_LOG2\fP   3"
+.br
+.ti -1c
+.RI "#define \fBSTART_DATA_ADDRES\fP   NULL"
+.br
+.ti -1c
+.RI "#define \fBTONE_LENGHT\fP   40000"
+.br
+.ti -1c
+.RI "#define \fBTONE_DISTANCE\fP   1600"
+.br
+.ti -1c
+.RI "#define \fBADC_ZERO_VALUE\fP   127"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBDAC\fP (uint8_t current)"
+.br
+.ti -1c
+.RI "\fBfreq_t\fP * \fBcreate_freq\fP (uint16_t frequency)"
+.br
+.RI "functin for creating instance of freq_t "
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.ti -1c
+.RI "\fBISR\fP (TIMER1_COMPA_vect, ISR_BLOCK)"
+.br
+.RI "TIMER1_COMPA_vect set to 40 kHz\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBbutton_t\fP * \fBb_matrix\fP [4][3]"
+.br
+.ti -1c
+.RI "char \fBb_matrix_names\fP [4][3] = {{'1','2','3'},{'4','5','6'},{'7','8','9'},{'*','0','#'}}"
+.br
+.ti -1c
+.RI "\fBfreq_t\fP * \fBCOLUMS\fP [3]"
+.br
+.ti -1c
+.RI "\fBfreq_t\fP * \fBLINES\fP [4]"
+.br
+.ti -1c
+.RI "\fBbutton_t\fP * \fBg_next_button\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBperiod\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBdevide\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBstep\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBPOINTER_G\fP = 0"
+.br
+.ti -1c
+.RI "uint8_t \fBVOLATGE_G\fP = 255"
+.br
+.ti -1c
+.RI "uint16_t \fBFREQ_G\fP = 1000"
+.br
+.ti -1c
+.RI "enum \fBSTATE_GENERATOR\fP \fBSTATE_G\fP = \fBG_FREE\fP"
+.br
+.ti -1c
+.RI "uint8_t * \fBSTART_DATA_ADDR\fP = (uint8_t*)\fBDTFM_START_DATA_ADDR\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ADC_ZERO_VALUE   127"
+
+.PP
+Definition at line 103 of file main\&.c\&.
+.SS "#define COEFICIENT_MULTIPLE_DEC   8"
+
+.PP
+Definition at line 97 of file main\&.c\&.
+.SS "#define COEFICIENT_MULTIPLE_LOG2   3"
+
+.PP
+Definition at line 98 of file main\&.c\&.
+.SS "#define DDRG   DDRB"
+
+.PP
+Definition at line 79 of file main\&.c\&.
+.SS "#define DTFM_START_DATA_ADDR   255;"
+
+.PP
+Definition at line 92 of file main\&.c\&.
+.SS "#define f1209   1209"
+
+.PP
+Definition at line 87 of file main\&.c\&.
+.SS "#define f1336   1336"
+
+.PP
+Definition at line 88 of file main\&.c\&.
+.SS "#define f1477   1477"
+
+.PP
+Definition at line 89 of file main\&.c\&.
+.SS "#define f697   697"
+
+.PP
+Definition at line 83 of file main\&.c\&.
+.SS "#define f770   770"
+
+.PP
+Definition at line 84 of file main\&.c\&.
+.SS "#define f852   852"
+
+.PP
+Definition at line 85 of file main\&.c\&.
+.SS "#define f941   941"
+
+.PP
+Definition at line 86 of file main\&.c\&.
+.SS "#define F_CPU   16000000"
+
+.PP
+Definition at line 56 of file main\&.c\&.
+.SS "#define NUMBER_OF_SAMPLES   255"
+
+.PP
+Definition at line 96 of file main\&.c\&.
+.SS "#define PORTG   PORTB"
+
+.PP
+Definition at line 80 of file main\&.c\&.
+.SS "#define START_DATA_ADDRES   NULL"
+
+.PP
+Definition at line 99 of file main\&.c\&.
+.SS "#define TIME_OF_SAMPLE   0\&.000025"
+
+.PP
+Definition at line 95 of file main\&.c\&.
+.SS "#define TONE_DISTANCE   1600"
+
+.PP
+Definition at line 102 of file main\&.c\&.
+.SS "#define TONE_LENGHT   40000"
+
+.PP
+Definition at line 101 of file main\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBfreq_t\fP * create_freq (uint16_t frequency)"
+
+.PP
+functin for creating instance of freq_t 
+.PP
+\fBParameters\fP
+.RS 4
+\fI[uint16_t]\fP <frequency> <parameter_description> 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+<return_description>  <details> 
+.RE
+.PP
+
+.PP
+Definition at line 416 of file main\&.c\&.
+.SS "void DAC (uint8_t current)"
+
+.SS "ISR (TIMER1_COMPA_vect, ISR_BLOCK)"
+
+.PP
+TIMER1_COMPA_vect set to 40 kHz\&. ISR rutine run 
+.PP
+Definition at line 310 of file main\&.c\&.
+.SS "int main ()"
+
+.PP
+Definition at line 128 of file main\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBbutton_t\fP* b_matrix[4][3]"
+
+.PP
+Definition at line 109 of file main\&.c\&.
+.SS "char b_matrix_names[4][3] = {{'1','2','3'},{'4','5','6'},{'7','8','9'},{'*','0','#'}}"
+
+.PP
+Definition at line 110 of file main\&.c\&.
+.SS "\fBfreq_t\fP* COLUMS[3]"
+
+.PP
+Definition at line 111 of file main\&.c\&.
+.SS "uint8_t devide"
+
+.PP
+Definition at line 114 of file main\&.c\&.
+.SS "uint16_t FREQ_G = 1000"
+
+.PP
+Definition at line 117 of file main\&.c\&.
+.SS "\fBbutton_t\fP* g_next_button"
+
+.PP
+Definition at line 113 of file main\&.c\&.
+.SS "\fBfreq_t\fP* LINES[4]"
+
+.PP
+Definition at line 112 of file main\&.c\&.
+.SS "uint8_t period"
+
+.PP
+Definition at line 114 of file main\&.c\&.
+.SS "uint8_t POINTER_G = 0"
+
+.PP
+Definition at line 115 of file main\&.c\&.
+.SS "uint8_t* START_DATA_ADDR = (uint8_t*)\fBDTFM_START_DATA_ADDR\fP"
+
+.PP
+Definition at line 119 of file main\&.c\&.
+.SS "enum \fBSTATE_GENERATOR\fP STATE_G = \fBG_FREE\fP"
+
+.PP
+Definition at line 117 of file main\&.c\&.
+.SS "uint8_t step"
+
+.PP
+Definition at line 114 of file main\&.c\&.
+.SS "uint8_t VOLATGE_G = 255"
+
+.PP
+Definition at line 116 of file main\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Waveform generator with R-2R DAC from the source code\&.

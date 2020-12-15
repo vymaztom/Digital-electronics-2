@@ -1,0 +1,122 @@
+.TH "I2C_LCD_TEST/printf.c" 3 "Tue Dec 15 2020" "Version v1.0" "Waveform generator with R-2R DAC" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+I2C_LCD_TEST/printf.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdarg\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBZEROPAD\fP   1		/* pad with zero */"
+.br
+.ti -1c
+.RI "#define \fBSIGN\fP   2		/* unsigned/signed long */"
+.br
+.ti -1c
+.RI "#define \fBPLUS\fP   4		/* show plus */"
+.br
+.ti -1c
+.RI "#define \fBSPACE\fP   8		/* space \fBif\fP plus */"
+.br
+.ti -1c
+.RI "#define \fBLEFT\fP   16		/* left justified */"
+.br
+.ti -1c
+.RI "#define \fBSMALL\fP   32		/* Must be 32 == 0x20 */"
+.br
+.ti -1c
+.RI "#define \fBSPECIAL\fP   64		/* 0x */"
+.br
+.ti -1c
+.RI "#define \fB__do_div\fP(n,  base)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBMYvsprintf\fP (char *buf, const char *fmt, va_list args)"
+.br
+.ti -1c
+.RI "int \fBMYsprintf\fP (char *buf, const char *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBMYprintf\fP (const char *fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define __do_div(n, base)"
+\fBValue:\fP
+.PP
+.nf
+({ \
+int __res; \
+__res = ((unsigned long) n) % (unsigned) base; \
+n = ((unsigned long) n) / (unsigned) base; \
+__res; })
+.fi
+.PP
+Definition at line 22 of file printf\&.c\&.
+.SS "#define LEFT   16		/* left justified */"
+
+.PP
+Definition at line 19 of file printf\&.c\&.
+.SS "#define PLUS   4		/* show plus */"
+
+.PP
+Definition at line 17 of file printf\&.c\&.
+.SS "#define SIGN   2		/* unsigned/signed long */"
+
+.PP
+Definition at line 16 of file printf\&.c\&.
+.SS "#define SMALL   32		/* Must be 32 == 0x20 */"
+
+.PP
+Definition at line 20 of file printf\&.c\&.
+.SS "#define SPACE   8		/* space \fBif\fP plus */"
+
+.PP
+Definition at line 18 of file printf\&.c\&.
+.SS "#define SPECIAL   64		/* 0x */"
+
+.PP
+Definition at line 21 of file printf\&.c\&.
+.SS "#define ZEROPAD   1		/* pad with zero */"
+
+.PP
+Definition at line 15 of file printf\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "int main ()"
+
+.PP
+Definition at line 272 of file printf\&.c\&.
+.SS "int MYprintf (const char * fmt,  \&.\&.\&.)"
+
+.PP
+Definition at line 259 of file printf\&.c\&.
+.SS "int MYsprintf (char * buf, const char * fmt,  \&.\&.\&.)"
+
+.PP
+Definition at line 248 of file printf\&.c\&.
+.SS "int MYvsprintf (char * buf, const char * fmt, va_list args)"
+
+.PP
+Definition at line 97 of file printf\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Waveform generator with R-2R DAC from the source code\&.

@@ -1,0 +1,116 @@
+.TH "library/twi.c" 3 "Tue Dec 15 2020" "Version v1.0" "Waveform generator with R-2R DAC" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+library/twi.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'include/twi\&.h'\fP
+.br
+\fC#include 'include/common\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBtwi_init\fP (void)"
+.br
+.ti -1c
+.RI "uint8_t \fBtwi_start\fP (uint8_t slave_address)"
+.br
+.ti -1c
+.RI "void \fBtwi_write\fP (uint8_t \fBdata\fP)"
+.br
+.ti -1c
+.RI "uint8_t \fBtwi_read_ack\fP (void)"
+.br
+.ti -1c
+.RI "uint8_t \fBtwi_read_nack\fP (void)"
+.br
+.ti -1c
+.RI "void \fBtwi_stop\fP (void)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void twi_init (void)"
+Initialize TWI, enable internal pull-up resistors, and set SCL frequency\&. 
+.PP
+\fBImplementation notes:\fP
+.RS 4
+
+.IP "\(bu" 2
+AVR internal pull-up resistors at pins TWI_SDA_PIN and TWI_SCL_PIN are enabled
+.IP "\(bu" 2
+TWI bit rate register value is calculated as follows fscl = fcpu/(16 + 2*TWBR) 
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 17 of file twi\&.c\&.
+.SS "uint8_t twi_read_ack (void)"
+Read one byte from TWI slave device, followed by ACK\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Received data\&. 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file twi\&.c\&.
+.SS "uint8_t twi_read_nack (void)"
+Read one byte from TWI slave device, followed by NACK\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Received data\&. 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file twi\&.c\&.
+.SS "uint8_t twi_start (uint8_t slave_address)"
+Start communication on TWI bus and send address of TWI slave\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIslave_address\fP Address and transfer direction of TWI slave\&. 
+.RE
+.PP
+\fBReturn values\fP
+.RS 4
+\fI0\fP - Slave device accessible\&. 
+.br
+\fI1\fP - Failed to access slave device\&. 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Function returns 0 only if 0x18 or 0x40 status code is detected\&. 0x18: SLA+W has been transmitted and ACK has been received\&. 0x40: SLA+R has been transmitted and ACK has been received\&. 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file twi\&.c\&.
+.SS "void twi_stop (void)"
+Generates stop condition on TWI bus\&. 
+.PP
+Definition at line 85 of file twi\&.c\&.
+.SS "void twi_write (uint8_t data)"
+Send one byte to TWI slave device\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdata\fP Byte to be transmitted\&. 
+.RE
+.PP
+
+.PP
+Definition at line 58 of file twi\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Waveform generator with R-2R DAC from the source code\&.
